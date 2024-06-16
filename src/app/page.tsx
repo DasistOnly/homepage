@@ -27,11 +27,12 @@ import {
 
 export default async function Home() {
   const status: string = await getDiscordStatus();
+  const age = new Date().getFullYear() - 2005 - (new Date().getMonth() >= 6 ? 0 : 1);
+
   const cards = [
     {
       title: "📝 About me",
-      description:
-        "Hi, I'm Finn, an 18-year-old self-taught developer from Germany. I'm passionate about web development and love to learn new things.",
+      description: `Hi, I'm Finn, an ${age}-year-old self-taught developer from Germany. I'm passionate about web development and love to learn new things.`,
     },
     {
       title: "🛠️ Projects",
