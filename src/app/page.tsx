@@ -64,9 +64,9 @@ export default async function Home() {
 
       <h1 className="text-3xl text-center font-semibold">Hi, I'm Finn 👋</h1>
 
-      <div className="flex justify-center gap-4 mt-8">
+      <div className="flex justify-center gap-4 mt-8 flex-wrap md:flex-nowrap">
         {cards.map((card) => (
-          <Card className="mt-8 w-1/3 mx-auto" key={card.title}>
+          <Card className="mt-8 mx-auto xl:w-1/3" key={card.title}>
             <CardHeader>
               <CardTitle>{card.title}</CardTitle>
               <CardDescription>{card.description}</CardDescription>
@@ -77,8 +77,8 @@ export default async function Home() {
 
       <h2 className="text-2xl text-center mt-12">Techstack</h2>
 
-      <div className="flex justify-center gap-4 mt-8">
-        <Card className="mt-8 w-1/4 mx-auto">
+      <div className="flex justify-center gap-4 mt-8 flex-wrap md:flex-nowrap">
+        <Card className="mt-8 mx-auto xl:w-1/4 md:w-1/2">
           <CardHeader>
             <CardTitle className="text-center">Languages</CardTitle>
             <CardDescription className="flex gap-2 justify-center">
@@ -90,7 +90,7 @@ export default async function Home() {
           </CardHeader>
         </Card>
 
-        <Card className="mt-8 w-1/4 mx-auto">
+        <Card className="mt-8 xl:w-1/4 mx-auto md:w-1/2">
           <CardHeader>
             <CardTitle className="text-center">
               Frameworks & Libraries
@@ -107,7 +107,7 @@ export default async function Home() {
           </CardHeader>
         </Card>
 
-        <Card className="mt-8 w-1/4 mx-auto">
+        <Card className="mt-8 xl:w-1/4 mx-auto md:w-1/2">
           <CardHeader>
             <CardTitle className="text-center">Databases</CardTitle>
             <CardDescription className="flex gap-2 justify-center">
@@ -127,7 +127,6 @@ export default async function Home() {
               href={contact.url}
               target="_blank"
               rel="noreferrer"
-
               className="flex gap-2 items-center"
               key={contact.text}
             >
