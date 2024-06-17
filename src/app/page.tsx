@@ -25,9 +25,17 @@ import {
   IconBrandGithub,
 } from "@tabler/icons-react";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 export default async function Home() {
   const status: string = await getDiscordStatus();
-  const age = new Date().getFullYear() - 2005 - (new Date().getMonth() >= 6 ? 0 : 1);
+  const age =
+    new Date().getFullYear() - 2005 - (new Date().getMonth() >= 6 ? 0 : 1);
 
   const cards = [
     {
@@ -59,6 +67,73 @@ export default async function Home() {
     },
   ];
 
+  const skills = [
+    {
+      title: "Languages",
+      items: [
+        {
+          name: "TypeScript",
+          icon: IconBrandTypescript,
+        },
+        {
+          name: "JavaScript",
+          icon: IconBrandJavascript,
+        },
+        { name: "CSS", icon: IconBrandCss3 },
+        {
+          name: "HTML",
+          icon: IconBrandHtml5,
+        },
+      ],
+    },
+    {
+      title: "Frameworks & Libraries",
+      items: [
+        {
+          name: "React",
+          icon: IconBrandReact,
+        },
+        {
+          name: "Node.js",
+          icon: IconBrandNodejs,
+        },
+        {
+          name: "Vue",
+          icon: IconBrandVue,
+        },
+        {
+          name: "Next.js",
+          icon: IconBrandNextjs,
+        },
+        {
+          name: "pnpm",
+          icon: IconBrandPnpm,
+        },
+        {
+          name: "Sass",
+          icon: IconBrandSass,
+        },
+        {
+          name: "Tailwind CSS",
+          icon: IconBrandTailwind,
+        },
+      ],
+    },
+    {
+      title: "Databases",
+      items: [
+        {
+          name: "MongoDB",
+          icon: IconBrandMongodb,
+        },
+        {
+          name: "MySQL",
+          icon: IconBrandMysql,
+        },
+      ],
+    },
+  ];
+
   return (
     <main className="container mx-auto">
       <Avatar discordStatus={status} />
@@ -79,44 +154,25 @@ export default async function Home() {
       <h2 className="text-2xl text-center mt-12">Techstack</h2>
 
       <div className="flex justify-center gap-4 mt-8 flex-wrap md:flex-nowrap">
-        <Card className="mt-8 mx-auto xl:w-1/4 md:w-1/2">
-          <CardHeader>
-            <CardTitle className="text-center">Languages</CardTitle>
-            <CardDescription className="flex gap-2 justify-center">
-              <IconBrandTypescript stroke={2} />
-              <IconBrandJavascript stroke={2} />
-              <IconBrandCss3 stroke={2} />
-              <IconBrandHtml5 stroke={2} />
-            </CardDescription>
-          </CardHeader>
-        </Card>
-
-        <Card className="mt-8 xl:w-1/4 mx-auto md:w-1/2">
-          <CardHeader>
-            <CardTitle className="text-center">
-              Frameworks & Libraries
-            </CardTitle>
-            <CardDescription className="flex gap-2 justify-center">
-              <IconBrandReact stroke={2} />
-              <IconBrandNodejs stroke={2} />
-              <IconBrandVue stroke={2} />
-              <IconBrandNextjs stroke={2} />
-              <IconBrandPnpm stroke={2} />
-              <IconBrandSass stroke={2} />
-              <IconBrandTailwind stroke={2} />
-            </CardDescription>
-          </CardHeader>
-        </Card>
-
-        <Card className="mt-8 xl:w-1/4 mx-auto md:w-1/2">
-          <CardHeader>
-            <CardTitle className="text-center">Databases</CardTitle>
-            <CardDescription className="flex gap-2 justify-center">
-              <IconBrandMongodb stroke={2} />
-              <IconBrandMysql stroke={2} />
-            </CardDescription>
-          </CardHeader>
-        </Card>
+        {skills.map((skill) => (
+          <Card className="mt-8 mx-auto xl:w-1/3" key={skill.title}>
+            <CardHeader>
+              <CardTitle className="text-center">{skill.title}</CardTitle>
+              <CardDescription className="flex gap-2 justify-center">
+                {skill.items.map((item) => (
+                  <TooltipProvider key={item.name}>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <item.icon />
+                        <TooltipContent>{item.name}</TooltipContent>
+                      </TooltipTrigger>
+                    </Tooltip>
+                  </TooltipProvider>
+                ))}
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        ))}
       </div>
 
       <h2 className="text-2xl text-center mt-12">Contact</h2>
