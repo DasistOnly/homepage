@@ -23,6 +23,7 @@ import {
   IconBrandHtml5,
   IconBrandDiscord,
   IconBrandGithub,
+  IconMail,
 } from "@tabler/icons-react";
 
 import {
@@ -64,6 +65,11 @@ export default async function Home() {
       text: "GitHub",
       url: "https://github.com/dasistonly",
       icon: IconBrandGithub,
+    },
+    {
+      text: "Email",
+      url: "mailto:finnlucaf@icloud.com",
+      icon: IconMail,
     },
   ];
 
