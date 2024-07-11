@@ -26,6 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="select-none">
+      <head>
+        <link rel="canonical" href="https://finnfriedrich.com" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
