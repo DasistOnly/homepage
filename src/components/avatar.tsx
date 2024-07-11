@@ -11,6 +11,7 @@ export default function Avatar({ discordStatus }: { discordStatus: string }) {
       style={{ borderColor: `#${discordStatus}`, padding: "2px" }}
       width={128}
       height={128}
+      priority
     />
   );
 }
