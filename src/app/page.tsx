@@ -169,7 +169,7 @@ export default async function Home() {
                 {skill.items.map((item) => (
                   <TooltipProvider key={item.name}>
                     <Tooltip>
-                      <TooltipTrigger>
+                      <TooltipTrigger aria-label="Skill icon">
                         <item.icon />
                         <TooltipContent>{item.name}</TooltipContent>
                       </TooltipTrigger>
@@ -187,7 +187,7 @@ export default async function Home() {
       <div className="flex justify-center gap-4 mt-8">
         {contacts.map((contact) => (
           <div key={contact.text}>
-            <Link href={contact.url} className="flex gap-2 items-center">
+            <Link href={contact.url} className="flex gap-2 items-center" aria-label="Contact">
               <contact.icon stroke={2} size={32} />
             </Link>
           </div>
