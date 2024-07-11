@@ -32,6 +32,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Link from "next/link";
 
 export default async function Home() {
   const status: string = await getDiscordStatus();
@@ -186,15 +187,9 @@ export default async function Home() {
       <div className="flex justify-center gap-4 mt-8">
         {contacts.map((contact) => (
           <div key={contact.text}>
-            <a
-              href={contact.url}
-              target="_blank"
-              rel="noreferrer"
-              className="flex gap-2 items-center"
-              key={contact.text}
-            >
+            <Link href={contact.url} className="flex gap-2 items-center">
               <contact.icon stroke={2} size={32} />
-            </a>
+            </Link>
           </div>
         ))}
       </div>
