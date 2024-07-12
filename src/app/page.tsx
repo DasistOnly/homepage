@@ -8,19 +8,6 @@ import {
 } from "@/components/ui/card";
 
 import {
-  IconBrandReact,
-  IconBrandNodejs,
-  IconBrandVue,
-  IconBrandNextjs,
-  IconBrandPnpm,
-  IconBrandSass,
-  IconBrandTailwind,
-  IconBrandTypescript,
-  IconBrandJavascript,
-  IconBrandMongodb,
-  IconBrandMysql,
-  IconBrandCss3,
-  IconBrandHtml5,
   IconBrandDiscord,
   IconBrandGithub,
   IconMail,
@@ -34,110 +21,28 @@ import {
 } from "@/components/ui/tooltip";
 import Link from "next/link";
 
+import { config } from "@/config";
+import { skills } from "@/config/skills";
+import { cards } from "@/config/cards";
+
 export default async function Home() {
   const status: string = await getDiscordStatus();
-  const age =
-    new Date().getFullYear() - 2005 - (new Date().getMonth() >= 6 ? 0 : 1);
-
-  const cards = [
-    {
-      title: "📝 About me",
-      description: `Hi, I'm Finn, an ${age}-year-old self-taught developer from Germany. I'm passionate about web development and love to learn new things.`,
-    },
-    {
-      title: "🛠️ Projects",
-      description:
-        "I'm currently working on a few projects, including some smart home integrations. I'm always looking for new projects to work on, so feel free to reach out if you have any ideas!",
-    },
-    {
-      title: "📚 Learning",
-      description:
-        "I'm currently learning the Arduino lang and Svelte. I'm excited to see what I can build with them. I'm also interested in learning more about design and UI/UX.",
-    },
-  ];
 
   const contacts = [
     {
       text: "Discord",
-      url: "https://discord.com/users/386530212936155136",
+      url: "https://discord.com/users/" + config.discordId,
       icon: IconBrandDiscord,
     },
     {
       text: "GitHub",
-      url: "https://github.com/dasistonly",
+      url: "https://github.com/" + config.githubName,
       icon: IconBrandGithub,
     },
     {
       text: "Email",
-      url: "mailto:finnlucaf@icloud.com",
+      url: "mailto:" + config.email,
       icon: IconMail,
-    },
-  ];
-
-  const skills = [
-    {
-      title: "Languages",
-      items: [
-        {
-          name: "TypeScript",
-          icon: IconBrandTypescript,
-        },
-        {
-          name: "JavaScript",
-          icon: IconBrandJavascript,
-        },
-        { name: "CSS", icon: IconBrandCss3 },
-        {
-          name: "HTML",
-          icon: IconBrandHtml5,
-        },
-      ],
-    },
-    {
-      title: "Frameworks & Libraries",
-      items: [
-        {
-          name: "React",
-          icon: IconBrandReact,
-        },
-        {
-          name: "Node.js",
-          icon: IconBrandNodejs,
-        },
-        {
-          name: "Vue",
-          icon: IconBrandVue,
-        },
-        {
-          name: "Next.js",
-          icon: IconBrandNextjs,
-        },
-        {
-          name: "pnpm",
-          icon: IconBrandPnpm,
-        },
-        {
-          name: "Sass",
-          icon: IconBrandSass,
-        },
-        {
-          name: "Tailwind CSS",
-          icon: IconBrandTailwind,
-        },
-      ],
-    },
-    {
-      title: "Databases",
-      items: [
-        {
-          name: "MongoDB",
-          icon: IconBrandMongodb,
-        },
-        {
-          name: "MySQL",
-          icon: IconBrandMysql,
-        },
-      ],
     },
   ];
 
@@ -145,7 +50,9 @@ export default async function Home() {
     <main className="container mx-auto">
       <Avatar discordStatus={status} />
 
-      <h1 className="text-3xl text-center font-semibold">Hi, I'm Finn 👋</h1>
+      <h1 className="text-3xl text-center font-semibold">
+        Hi, I'm {config.personal.name} 👋
+      </h1>
 
       <div className="flex justify-center gap-4 mt-8 flex-wrap md:flex-nowrap">
         {cards.map((card) => (
@@ -187,7 +94,11 @@ export default async function Home() {
       <div className="flex justify-center gap-4 mt-8">
         {contacts.map((contact) => (
           <div key={contact.text}>
-            <Link href={contact.url} className="flex gap-2 items-center" aria-label="Contact">
+            <Link
+              href={contact.url}
+              className="flex gap-2 items-center"
+              aria-label="Contact"
+            >
               <contact.icon stroke={2} size={32} />
             </Link>
           </div>
