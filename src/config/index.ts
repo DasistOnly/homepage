@@ -28,7 +28,7 @@ export const config: Config = {
   },
   url: "https://finnfriedrich.com",
   seo: {
-    title: "Finn F",
+    title: "Finn Friedrich",
     description: "Software engineer from Germany",
   }
 }
