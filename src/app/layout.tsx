@@ -24,7 +24,7 @@ const listKeywords = () => {
 
 
 export const metadata: Metadata = {
-  title: config.seo.title,
+  title: config.personal.fullName,
   description: config.seo.description,
   keywords: listKeywords(),
   creator: config.personal.fullName,
